@@ -93,12 +93,18 @@ namespace HomeworkAsyncTask
             }
 
             string strin = " ";
-            foreach(string item  in str)
+            foreach (string item in str)
             {
                 strin += item;
             }
 
             MessageBox.Show(strin, "Result", MessageBoxButtons.OK);
+        }
+
+        private void MoveFileBtn_Click(object sender, EventArgs e)
+        {
+            FileMove fm = new FileMove();
+            fm.ShowDialog();
         }
     }
 }

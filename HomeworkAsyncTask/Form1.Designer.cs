@@ -35,6 +35,7 @@
             InterrogativeCB = new CheckBox();
             ExclamatoryCB = new CheckBox();
             FindBtn = new Button();
+            MoveFileBtn = new Button();
             SuspendLayout();
             // 
             // TextRTB
@@ -105,11 +106,23 @@
             FindBtn.UseVisualStyleBackColor = true;
             FindBtn.Click += FindBtn_Click;
             // 
+            // MoveFileBtn
+            // 
+            MoveFileBtn.AutoSize = true;
+            MoveFileBtn.Location = new Point(12, 246);
+            MoveFileBtn.Name = "MoveFileBtn";
+            MoveFileBtn.Size = new Size(308, 30);
+            MoveFileBtn.TabIndex = 7;
+            MoveFileBtn.Text = "Відкрити форму для переміщення файлів";
+            MoveFileBtn.UseVisualStyleBackColor = true;
+            MoveFileBtn.Click += MoveFileBtn_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(421, 293);
+            Controls.Add(MoveFileBtn);
             Controls.Add(FindBtn);
             Controls.Add(ExclamatoryCB);
             Controls.Add(InterrogativeCB);
@@ -132,5 +145,6 @@
         private CheckBox InterrogativeCB;
         private CheckBox ExclamatoryCB;
         private Button FindBtn;
+        private Button MoveFileBtn;
     }
 }
