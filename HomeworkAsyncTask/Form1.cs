@@ -9,12 +9,12 @@ namespace HomeworkAsyncTask
             InitializeComponent();
         }
 
-        private int CountSentenses(string str)
+        private async Task<int> CountSentenses(string str)
         {
             int count = 0;
             for (int i = 0; i < str.Length; i++)
             {
-                if (str[i] == '.' || str[i] == '?' || str[i] == '!' && str[i + 1] != '.' || str[i + 1] != '?' || str[i + 1] != '!')
+                if (str[i] == '.')
                 {
                     count++;
                 }
@@ -22,12 +22,12 @@ namespace HomeworkAsyncTask
             return count;
         }
 
-        private int CountSymbols(string str)
+        private async Task<int> CountSymbols(string str)
         {
             return str.Length;
         }
 
-        private int CountWords(string str)
+        private async Task<int> CountWords(string str)
         {
             int count = 0;
             for (int i = 0; i < str.Length; ++i)
@@ -40,7 +40,7 @@ namespace HomeworkAsyncTask
             return count;
         }
 
-        private int CountInterrogative(string str)
+        private async Task<int> CountInterrogative(string str)
         {
             int count = 0;
             for (int i = 0; i < str.Length; ++i)
@@ -53,7 +53,7 @@ namespace HomeworkAsyncTask
             return count;
         }
 
-        private int CountExclamatory(string str)
+        private async Task<int> CountExclamatory(string str)
         {
             int count = 0;
             for (int i = 0; i < str.Length; i++)
@@ -66,32 +66,39 @@ namespace HomeworkAsyncTask
             return count;
         }
 
-        private void FindBtn_Click(object sender, EventArgs e)
+        private async void FindBtn_Click(object sender, EventArgs e)
         {
-            string str = "";
+            List<string> str = new List<string>();
+
 
             if (SentensesCB.Checked)
             {
-                str += $"Кількість речень: {CountSentenses(TextRTB.Text)}\n";
+                str.Add($"Кількість реченнь: {CountSentenses(TextRTB.Text).Result}\n");
             }
             if (SymbolsCB.Checked)
             {
-                str += $"Кількість речень: {CountSymbols(TextRTB.Text)}\n";
+                str.Add($"Кількість символів: {CountSymbols(TextRTB.Text).Result}\n");
             }
             if (WordsCB.Checked)
             {
-                str += $"Кількість речень: {CountWords(TextRTB.Text)}\n";
+                str.Add($"Кількість слів: {CountWords(TextRTB.Text).Result}\n");
             }
             if (InterrogativeCB.Checked)
             {
-                str += $"Кількість речень: {CountInterrogative(TextRTB.Text)}\n";
+                str.Add($"Кількість питальних реченнь: {CountInterrogative(TextRTB.Text).Result}\n");
             }
             if (ExclamatoryCB.Checked)
             {
-                str += $"Кількість речень: {CountExclamatory(TextRTB.Text)}\n";
+                str.Add($"Кількість окличних реченнь: {CountExclamatory(TextRTB.Text).Result}\n");
             }
 
-            MessageBox.Show(str, "Result", MessageBoxButtons.OK);
+            string strin = " ";
+            foreach(string item  in str)
+            {
+                strin += item;
+            }
+
+            MessageBox.Show(strin, "Result", MessageBoxButtons.OK);
         }
     }
 }
